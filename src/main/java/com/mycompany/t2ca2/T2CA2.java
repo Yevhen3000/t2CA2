@@ -14,7 +14,8 @@ public class T2CA2 {
 
     public static void main(String[] args) {
         
-        
+     EmployeeTest et = new EmployeeTest();
+     et.main();
         
     }
 }
