@@ -7,8 +7,10 @@ package com.mycompany.t2ca2;
 import java.util.ArrayList;
 
 /**
- *
- * @author Admin
+ * @date start    19/02/24
+ * @author  Yevhen Kuropiatnyk
+ * @email   evgeniy.kuropyatnik@gmail.com
+ * @student sba23066
  */
 public class EmployeeTest {
     
@@ -29,6 +31,15 @@ public class EmployeeTest {
 //        }
         
         System.out.println("getNextEmpNum: " + Employee.getNextEmpNum());
+        
+        int m = 2;
+        
+        // Search and display names of employees with employee number above m
+        for (Employee emp : projectGroup) {
+            if (emp.getEmpNum() > m) {
+                System.out.println(emp.getName());
+            }
+        }
         
     }
     

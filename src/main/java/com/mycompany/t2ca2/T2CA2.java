@@ -13,9 +13,10 @@ package com.mycompany.t2ca2;
 public class T2CA2 {
 
     public static void main(String[] args) {
-        
-     EmployeeTest et = new EmployeeTest();
-     et.main();
+        //https://github.com/Yevhen3000/t2CA2
+     
+        EmployeeTest etest = new EmployeeTest();
+        etest.main();
         
     }
 }

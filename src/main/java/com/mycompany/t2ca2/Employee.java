@@ -6,8 +6,10 @@ package com.mycompany.t2ca2;
  */
 
 /**
- *
- * @author Admin
+ * @date start    19/02/24
+ * @author  Yevhen Kuropiatnyk
+ * @email   evgeniy.kuropyatnik@gmail.com
+ * @student sba23066
  */
 public class Employee {
     
@@ -52,11 +54,25 @@ public class Employee {
             this.email = email;
         } else {
             //Raise an error!
+            //throw new Exception("email must be more then 3 characters in lenght");
         }
     }
 
     public int getEmpNum() {
         return empNum;
+    }
+    
+    public boolean isEmailValid(String email) {
+        boolean ret = true;
+//        String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+//        Pattern pattern = Pattern.compile(regex);
+//        Matcher matcher = pattern.matcher(email);
+//        if(matcher.matches()) {
+//            ret = true;
+//        } else {
+//            ret = false;
+//        }
+        return ret;
     }
     
 }
