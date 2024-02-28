@@ -1,5 +1,8 @@
 package com.mycompany.t2ca2;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -64,14 +67,9 @@ public class Employee {
     
     public boolean isEmailValid(String email) {
         boolean ret = true;
-//        String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
-//        Pattern pattern = Pattern.compile(regex);
-//        Matcher matcher = pattern.matcher(email);
-//        if(matcher.matches()) {
-//            ret = true;
-//        } else {
-//            ret = false;
-//        }
+        Pattern regexPattern = Pattern.compile("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$");
+        Matcher regMatcher = regexPattern.matcher(email);
+        if(!regMatcher.matches()) ret = false;
         return ret;
     }
     

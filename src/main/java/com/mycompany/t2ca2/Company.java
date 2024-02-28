@@ -18,10 +18,17 @@ public class Company {
     private String companyName;
     private ArrayList<Employee> staff;
     private HashSet<Employee> staffSet;
+    
     public Company(){
         companyName = "defCompanyName";
         staff = new ArrayList<>();
-        staffSet = new HashSet<>();
+        staffSet = new HashSet<>(); 
+    }
+    
+    public Company(String companyNme){
+        companyName = companyNme;
+        staff = new ArrayList<>();
+        staffSet = new HashSet<>(); 
     }
     
     public void addNewStaff(Employee empl) {
