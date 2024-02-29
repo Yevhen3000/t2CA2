@@ -41,6 +41,17 @@ public class EmployeeTest {
             }
         }
         
+        // Let a manager log in
+        Manager man1 = new Manager("Gnomeo","smurf");
+        Menu mainmenu = new Menu();
+        
+        mainmenu.mainLoop(); // For debug only
+        
+//        mainmenu.DoAuthorization(man1);
+//        if (man1.getAuthorized()) {
+//            mainmenu.mainLoop();
+//        }
+        
     }
     
 }

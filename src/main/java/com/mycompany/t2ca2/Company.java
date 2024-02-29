@@ -33,10 +33,12 @@ public class Company {
     
     public void addNewStaff(Employee empl) {
         staff.add(empl);
+        //staffSet.add(empl); // Bonus challenge
     }
     
     public int getStaffNumber() {
         return staff.size();
+        //return staffSet.size(); // Bonus challenge
     }
     
     public void listEmployees(int employee_number ){
@@ -44,11 +46,26 @@ public class Company {
             if (emp.getEmpNum() > employee_number) {
                 System.out.println(emp.getName());
             }
-        }        
+        }
+
+// ------- Bonus challenge ------
+//        for (Employee emp : staffSet) {
+//            if (emp.getEmpNum() > employee_number) {
+//                System.out.println(emp.getName());
+//            }
+//        }         
+        
+    }
+
+    public void listAllEmployees(){
+        System.out.println("-#-|-------- name --|------ email ----|");
+        for (Employee emp : staff) {
+            System.out.println(emp.getEmpNum() + " | " + emp.getEmail() + " |");
+        }
     }
     
     public void removeStaff(int empNum ) {
-        
+        staff.remove(empNum);
     }
-        
+
 }

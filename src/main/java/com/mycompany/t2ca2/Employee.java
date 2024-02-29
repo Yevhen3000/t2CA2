@@ -56,8 +56,8 @@ public class Employee {
         if (email.length()>4 ) {
             this.email = email;
         } else {
-            //Raise an error!
-            //throw new Exception("email must be more then 3 characters in lenght");
+            //Raise an error! throw new Exception("email must be more then 3 characters in lenght");
+            System.out.println("email must be more then 3 characters in lenght");
         }
     }
 

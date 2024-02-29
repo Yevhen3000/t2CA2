@@ -11,6 +11,12 @@ package com.mycompany.t2ca2;
 public class Manager extends Employee {
     private String username;
     private String password;
+    private boolean authorized = false;
+    
+    public Manager(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
     
     public String getPassword() {
         return password;
@@ -23,9 +29,17 @@ public class Manager extends Employee {
     public String getUsername() {
         return username;
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
+    }  
+    
+    public boolean getAuthorized() {
+        return authorized;
     }    
+    
+    public void setAuthorized(boolean auth) {
+        this.authorized = auth;
+    }  
     
 }
