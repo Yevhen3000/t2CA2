@@ -58,14 +58,27 @@ public class Company {
     }
 
     public void listAllEmployees(){
-        System.out.println("-#-|-------- name --|------ email ----|");
+        int cnt = 0;
+        System.out.println("--------------- LIST of EMPLOYEES --------------");
+        System.out.println(" # |\t name \t\t|\t email \t\t|");
+        System.out.println("------------------------------------------------"); 
         for (Employee emp : staff) {
-            System.out.println(emp.getEmpNum() + " | " + emp.getEmail() + " |");
+            System.out.println(" " + emp.getEmpNum() + " |\t" + emp.getName() + "\t|\t" + emp.getEmail() + "\t|");
+            cnt++;
         }
+        if (cnt==0) System.out.println("|\t\t NO EMPLOYEES FOUND \t\t|");
+        System.out.println("------------------------------------------------");
     }
     
-    public void removeStaff(int empNum ) {
-        staff.remove(empNum);
+    public boolean removeStaff(int empNum ) {
+        boolean FoundAndRemoved = false;
+        for (Employee emp : staff) {
+            if (emp.getEmpNum() == empNum) {
+                staff.remove(empNum);
+                FoundAndRemoved = true;
+            }
+        }
+        return FoundAndRemoved;
     }
 
 }

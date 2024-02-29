@@ -25,7 +25,6 @@ public class EmployeeTest {
         projectGroup.add(empl2);
         projectGroup.add(empl3);
         
-        
 //        for (int i = 0; i < projectGroup.size(); i++) {
 //            System.out.println("Employee " + (i + 1) + ": " + projectGroup.get(i).getEmpNum());
 //        }
@@ -33,7 +32,6 @@ public class EmployeeTest {
         System.out.println("getNextEmpNum: " + Employee.getNextEmpNum());
         
         int m = 2;
-        
         // Search and display names of employees with employee number above m
         for (Employee emp : projectGroup) {
             if (emp.getEmpNum() > m) {
@@ -42,10 +40,25 @@ public class EmployeeTest {
         }
         
         // Let a manager log in
-        Manager man1 = new Manager("Gnomeo","smurf");
-        Menu mainmenu = new Menu();
+        Company company = new Company();
+        company.addNewStaff(empl1);
+        company.addNewStaff(empl2);
+        company.addNewStaff(empl3);
         
-        mainmenu.mainLoop(); // For debug only
+        Manager man1 = new Manager("Gnomeo","smurf");
+        Menu mainmenu = new Menu(company);
+        
+        
+        mainmenu.selectEmployeerToRemove();
+        
+        //company.listAllEmployees();
+        //mainmenu.mainLoop(); // For debug only
+        
+//        if (empl1.isEmailValid("mail@gmail.com")) {
+//            System.out.println("mail is ok");
+//        } else {
+//            System.out.println("mail is NOT valid!");
+//        }
         
 //        mainmenu.DoAuthorization(man1);
 //        if (man1.getAuthorized()) {

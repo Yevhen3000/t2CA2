@@ -25,8 +25,12 @@ public class Menu {
     public final String ANSI_WHITE = "\u001B[37m";    
     
     private Scanner sc;
+    private Company company;
+    private Manager manager;
     
-    private Company company = new Company();
+    public Menu(Company comp) {
+        company = comp;
+    }
 
     public void ShowPromt() { // Show main menu to manager and promt
         System.out.println(ANSI_PURPLE + "################# Manager menu #############" + ANSI_RESET);
@@ -42,9 +46,9 @@ public class Menu {
     
     public void mainLoop(){
         String choice;              // Holds manager's input string
-        
-        ShowPromt();                // Show main menu
+        sc  = new Scanner(System.in);
         while (true) {              // General menu cycle
+            ShowPromt();            // Show main menu
             try {
                 if (sc.hasNext()) {
                     choice = sc.nextLine();
@@ -54,17 +58,14 @@ public class Menu {
                             break;
 
                         case "2":
-                            // ToDO: user input for new Name & email with verification
-                            String newEmpName = "A";
-                            String newEmpEmail = "B";
+                            String newEmpName = UserGetNewEmployeeName();
+                            String newEmpEmail = UserGetNewEmployeeEmail();
                             Employee newEmp = new Employee(newEmpName,newEmpEmail);
                             company.addNewStaff(newEmp);
                             break;
 
                         case "3":
-                            //ToDO: List employeers and ask which to remove
-                            company.listAllEmployees();
-                            //Users'input for empNum to remove
+                            selectEmployeerToRemove();
                             break;
 
                         case "0":
@@ -84,6 +85,59 @@ public class Menu {
         }          
     }
 
+    public void selectEmployeerToRemove(){
+        company.listAllEmployees();
+        System.out.println("Please, enter employeer's number for removing:");
+        String choice="";              // Holds manager's input string
+        sc  = new Scanner(System.in);
+        try {
+            choice = sc.nextLine();
+        } catch (Exception e){
+            System.out.println("Ops, enter a number, please!");
+        }
+        int empNumToRem = Integer.parseInt(choice);
+        if (empNumToRem!=0) {
+            if (company.removeStaff(empNumToRem)){
+                System.out.println("Removed successfully");
+            } else {
+                System.out.println("Error upon removing");
+            }
+        } else {
+            System.out.println("Error: number cant be zero!");
+        }
+    }
+    
+    private String UserGetNewEmployeeName(){
+        String Newname = "";
+        boolean canGoOn = false;
+       
+        while(!canGoOn) { // Do while untill user enter new name
+            do  {
+                Newname = getUserInput("Please, enter a new user Name:");
+            } while (Newname.isEmpty());
+            canGoOn = true;
+        }
+        return Newname;
+    }
+
+    private String UserGetNewEmployeeEmail(){
+        String NewEmail = "";
+        boolean canGoOn = false;
+        
+       
+        while(!canGoOn) { // Do while untill user enter new name
+            do  {
+                NewEmail = getUserInput("Please, enter a user's valid e-mail:");
+            } while (NewEmail.isEmpty());
+            if (manager.isEmailValid(NewEmail)) {
+                canGoOn = true;
+            } else {
+                System.out.println("Email is not valid!");
+            }
+        }
+        return NewEmail;
+    }
+    
     private void menuShutDown() {
         System.out.println("Exiting...");
         sc.close();             // Release console resource
@@ -108,7 +162,7 @@ public class Menu {
     
     public void DoAuthorization(Manager man) { // let a manager to log in with: username – “Gnomeo”; Password – “smurf”
         System.out.println(ANSI_PURPLE + "--- LOGIN ---" + ANSI_RESET);
-        
+        this.manager = man;
         String userName = "";
         String userPass = "";
         boolean canGoOn = false;
