@@ -11,18 +11,7 @@ import java.util.Scanner;
  * @author Admin
  */
 
-public class Menu {
-    
-    // Colors to brighten up the gray routine
-    public final String ANSI_RESET = "\u001B[0m";
-    public final String ANSI_BLACK = "\u001B[30m";
-    public final String ANSI_RED = "\u001B[31m";
-    public final String ANSI_GREEN = "\u001B[32m";
-    public final String ANSI_YELLOW = "\u001B[33m";
-    public final String ANSI_BLUE = "\u001B[34m";
-    public final String ANSI_PURPLE = "\u001B[35m";
-    public final String ANSI_CYAN = "\u001B[36m";
-    public final String ANSI_WHITE = "\u001B[37m";    
+public class Menu { 
     
     private Scanner sc;
     private Company company;
@@ -33,14 +22,14 @@ public class Menu {
     }
 
     public void ShowPromt() { // Show main menu to manager and promt
-        System.out.println(ANSI_PURPLE + "################# Manager menu #############" + ANSI_RESET);
-        System.out.println(ANSI_PURPLE +"#                                         " + ANSI_PURPLE +" #");
-        System.out.println(ANSI_PURPLE +"#  " + ANSI_BLUE + "[1] View employees" + ANSI_PURPLE +"                      #");
-        System.out.println(ANSI_PURPLE +"#  " + ANSI_GREEN+ "[2] Add employee"  + ANSI_PURPLE +"                        #");
-        System.out.println(ANSI_PURPLE +"#  " + ANSI_RED + "[3] Remove employee"  + ANSI_PURPLE +"                     #");
-        System.out.println(ANSI_PURPLE +"#  " + ANSI_RED + "[0] Exit"  + ANSI_PURPLE +"                                #");
-        System.out.println(ANSI_PURPLE +"#                                        " + ANSI_PURPLE +"  #");
-        System.out.println(ANSI_PURPLE +"############################################" + ANSI_RESET);
+        System.out.println("################# Manager menu #############");
+        System.out.println("#                                          #");
+        System.out.println("#  [1] View employees                      #");
+        System.out.println("#  [2] Add employee                        #");
+        if (company. getStaffNumber()!=0) System.out.println("#  [3] Remove employee                     #");
+        System.out.println("#  [0] Exit                                #");
+        System.out.println("#                                          #");
+        System.out.println("############################################");
         System.out.println("Please, enter the menu command number:");        
     }       
     
@@ -161,7 +150,7 @@ public class Menu {
     }
     
     public void DoAuthorization(Manager man) { // let a manager to log in with: username – “Gnomeo”; Password – “smurf”
-        System.out.println(ANSI_PURPLE + "--- LOGIN ---" + ANSI_RESET);
+        System.out.println("--- LOGIN ---");
         this.manager = man;
         String userName = "";
         String userPass = "";

@@ -16,54 +16,53 @@ public class EmployeeTest {
     
     public void main(){
         
+        // B1 - creates 3 Employee objects, with the following details
         Employee empl1 = new Employee("Joe Bloggs","jb@gmail.com");
         Employee empl2 = new Employee("Ann Banana","ab@gmail.com");
         Employee empl3 = new Employee("Tom Thumb","tt@gmail.com");
         
+        //declares an array, called projectGroup, to store these 3 Employee objects and loads the array with the objects.
         ArrayList<Employee> projectGroup = new ArrayList<>();
         projectGroup.add(empl1);
         projectGroup.add(empl2);
         projectGroup.add(empl3);
-        
-//        for (int i = 0; i < projectGroup.size(); i++) {
-//            System.out.println("Employee " + (i + 1) + ": " + projectGroup.get(i).getEmpNum());
-//        }
-        
+
+        //prints out the value of variable nextEmpNum to the terminal window. 
         System.out.println("getNextEmpNum: " + Employee.getNextEmpNum());
         
-        int m = 2;
         // Search and display names of employees with employee number above m
+        int m = 2;
         for (Employee emp : projectGroup) {
             if (emp.getEmpNum() > m) {
                 System.out.println(emp.getName());
             }
         }
         
-        // Let a manager log in
+        //Challenge: Implement a check for a valid email address
+        if (empl1.isEmailValid("somemail@gmail.com")){
+            System.out.println("Email is ok");
+        } else {
+            System.out.println("Email is NOT valid!");
+        }
+        
+        // Add employees to Company
         Company company = new Company();
         company.addNewStaff(empl1);
         company.addNewStaff(empl2);
         company.addNewStaff(empl3);
         
+        // Let a manager log in
         Manager man1 = new Manager("Gnomeo","smurf");
         Menu mainmenu = new Menu(company);
         
-        
-        mainmenu.selectEmployeerToRemove();
-        
+        //mainmenu.selectEmployeerToRemove();
         //company.listAllEmployees();
         //mainmenu.mainLoop(); // For debug only
         
-//        if (empl1.isEmailValid("mail@gmail.com")) {
-//            System.out.println("mail is ok");
-//        } else {
-//            System.out.println("mail is NOT valid!");
-//        }
-        
-//        mainmenu.DoAuthorization(man1);
-//        if (man1.getAuthorized()) {
-//            mainmenu.mainLoop();
-//        }
+        mainmenu.DoAuthorization(man1);
+        if (man1.getAuthorized()) {
+            mainmenu.mainLoop();
+        }
         
     }
     

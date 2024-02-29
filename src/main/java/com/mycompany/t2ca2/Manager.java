@@ -36,7 +36,7 @@ public class Manager extends Employee {
     
     public boolean getAuthorized() {
         return authorized;
-    }    
+    }
     
     public void setAuthorized(boolean auth) {
         this.authorized = auth;
