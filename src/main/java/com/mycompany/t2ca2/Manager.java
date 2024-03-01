@@ -5,14 +5,19 @@
 package com.mycompany.t2ca2;
 
 /**
- *
- * @author Admin
+ * @date start    19/02/24
+ * @author  Yevhen Kuropiatnyk
+ * @email   evgeniy.kuropyatnik@gmail.com
+ * @student sba23066
  */
+
+//One constructor initialises the name and email instance fields with default values. 
 public class Manager extends Employee {
     private String username;
     private String password;
     private boolean authorized = false;
     
+    //The other constructor initialises these fields with values passed as parameters.
     public Manager(String username, String password){
         this.username = username;
         this.password = password;

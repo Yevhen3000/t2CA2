@@ -30,8 +30,7 @@ public class CompanyHash {
         companyName = companyNme;
         staffSet = new HashSet<>(); 
     }    
-    
-    
+        
     //Complete the implementation by writing the code for the following methods only: 
     public void addNewStaff(Employee empl) {
         staffSet.add(empl); // Bonus challenge

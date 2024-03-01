@@ -38,6 +38,7 @@ public class Menu {
         System.out.println("Please, enter the menu command number:");        
     }       
     
+    // Treat manager's input and execute the choosen tool
     public void mainLoop(){
         String choice;              // Holds manager's input string
         sc  = new Scanner(System.in);
