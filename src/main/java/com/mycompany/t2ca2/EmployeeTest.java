@@ -51,16 +51,15 @@ public class EmployeeTest {
         company.addNewStaff(empl2);
         company.addNewStaff(empl3);
         
-        // Let a manager log in
+        // Create a manager to log in
         Manager man1 = new Manager("Gnomeo","smurf");
+        // To handle employeers via menu
         Menu mainmenu = new Menu(company);
         
-        //mainmenu.selectEmployeerToRemove();
-        //company.listAllEmployees();
-        //mainmenu.mainLoop(); // For debug only
-        
+        // Ask use to enter name and pass to act as a manager
         mainmenu.DoAuthorization(man1);
         if (man1.getAuthorized()) {
+            // If name && pass are ok - show manager the menu to operate
             mainmenu.mainLoop();
         }
         

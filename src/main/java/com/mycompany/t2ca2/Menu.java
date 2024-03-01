@@ -7,8 +7,10 @@ package com.mycompany.t2ca2;
 import java.util.Scanner;
 
 /**
- *
- * @author Admin
+ * @date start    19/02/24
+ * @author  Yevhen Kuropiatnyk
+ * @email   evgeniy.kuropyatnik@gmail.com
+ * @student sba23066
  */
 
 public class Menu { 
@@ -17,11 +19,14 @@ public class Menu {
     private Company company;
     private Manager manager;
     
+    //Init menu and pass company instance object
     public Menu(Company comp) {
         company = comp;
     }
 
-    public void ShowPromt() { // Show main menu to manager and promt
+    // Show main menu to manager and promt
+    // *As there is no front-end requirement or specification OR limitation
+    public void ShowPromt() { 
         System.out.println("################# Manager menu #############");
         System.out.println("#                                          #");
         System.out.println("#  [1] View employees                      #");
@@ -43,10 +48,12 @@ public class Menu {
                     choice = sc.nextLine();
                     switch (choice) {
                         case "1":
+                            // List employees
                             company.listAllEmployees();
                             break;
 
                         case "2":
+                            //Add new employee
                             String newEmpName = UserGetNewEmployeeName();
                             String newEmpEmail = UserGetNewEmployeeEmail();
                             Employee newEmp = new Employee(newEmpName,newEmpEmail);
@@ -54,14 +61,17 @@ public class Menu {
                             break;
 
                         case "3":
+                            //Remove an employee
                             selectEmployeerToRemove();
                             break;
 
                         case "0":
+                            //Exit
                             menuShutDown();
                             break;                      
 
-                        default:                   // User has entered string different from 1,2,3,4
+                        default:
+                            // User has entered string different from 1,2,3,0
                             System.out.println("Please, enter the correct menu number:");
                             break;                            
                     }
@@ -69,11 +79,12 @@ public class Menu {
 
             } catch (Exception e){
                 System.out.println("Ops, enter a number, please!");
-                //ShowPromt();                // Show main menu
             }
         }          
     }
 
+    // List employeers amd promt for manager who needs to be removed
+    // *As there is no front-end requirement or specification OR limitation
     public void selectEmployeerToRemove(){
         company.listAllEmployees();
         System.out.println("Please, enter employeer's number for removing:");
@@ -96,6 +107,7 @@ public class Menu {
         }
     }
     
+    //Method for obtainig a new user name from manager
     private String UserGetNewEmployeeName(){
         String Newname = "";
         boolean canGoOn = false;
@@ -109,11 +121,11 @@ public class Menu {
         return Newname;
     }
 
+    //Method for obtainig a new user email with validation from manager
     private String UserGetNewEmployeeEmail(){
         String NewEmail = "";
         boolean canGoOn = false;
-        
-       
+               
         while(!canGoOn) { // Do while untill user enter new name
             do  {
                 NewEmail = getUserInput("Please, enter a user's valid e-mail:");
@@ -127,12 +139,14 @@ public class Menu {
         return NewEmail;
     }
     
+    //Clear all up before exit
     private void menuShutDown() {
         System.out.println("Exiting...");
         sc.close();             // Release console resource
         System.exit(0);
     }
     
+    //Handle user input with a promt (optional)
     public String getUserInput(String message){ // Get a string from user
         String useInput = "";
         sc  = new Scanner(System.in);
@@ -149,14 +163,15 @@ public class Menu {
         return useInput;
     }
     
-    public void DoAuthorization(Manager man) { // let a manager to log in with: username – “Gnomeo”; Password – “smurf”
+    //Check user's name && password to level up him(her) to manager access level
+    public void DoAuthorization(Manager man) { // username – “Gnomeo”; Password – “smurf”
         System.out.println("--- LOGIN ---");
         this.manager = man;
         String userName = "";
         String userPass = "";
         boolean canGoOn = false;
        
-        while(!canGoOn) { // Do while untill user enter username
+        while(!canGoOn) { // Do while untill user enters username
             do  {
                 userName = getUserInput("Please, enter the username [CANCEL to exit]:");
             } while (userName.isEmpty());
@@ -165,7 +180,7 @@ public class Menu {
         }
         
         canGoOn = false;
-        while(!canGoOn) { // Do while untill user enter password
+        while(!canGoOn) { // Do while untill user enters password
             do  {
                 userPass = getUserInput("Please, enter the password [CANCEL to exit]:");
             } while (userPass.isEmpty());
@@ -173,6 +188,7 @@ public class Menu {
             canGoOn = true;
         }
         
+        // if username && password ok - show manager's menu
         if (userName.equals(man.getUsername()) && userPass.equals(man.getPassword()) ){
             System.out.println("Welcome, " + man.getUsername() + "!");
             man.setAuthorized(true);
@@ -182,7 +198,5 @@ public class Menu {
 
         
     }
-    
-    
     
 }

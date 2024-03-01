@@ -16,8 +16,10 @@ import java.util.regex.Pattern;
  */
 public class Employee {
     
+    // To keep track of count of employees
     private static int nextEmpNum = 1;
 
+    //to return the current value of nextEmpNum
     public static int getNextEmpNum() {
         return nextEmpNum;
     }
@@ -52,6 +54,8 @@ public class Employee {
         return email;
     }
 
+    // to set the email field to a new value passed as a parameter.  
+    // The value must not be accepted if its length is 3 or less.
     public void setEmail(String email) {
         if (email.length()>4 ) {
             this.email = email;
@@ -65,6 +69,7 @@ public class Employee {
         return empNum;
     }
     
+    //Challenge: Implement a check for a valid email address
     public boolean isEmailValid(String email) {
         boolean ret = true;
         Pattern regexPattern = Pattern.compile("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$");

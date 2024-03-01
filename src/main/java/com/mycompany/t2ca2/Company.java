@@ -5,7 +5,6 @@
 package com.mycompany.t2ca2;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  * @date start    19/02/24
@@ -36,10 +35,14 @@ public class Company {
         staff.add(empl);
     }
     
+    //Returns the number of employees currently in the arrayList
     public int getStaffNumber() {
         return staff.size();
     }
     
+    //uses an iterator object to find in the arrayList all employees above 
+    //a given employee number value  (this value is a parameter for this method) 
+    // and prints the names of these employees. 
     public void listEmployees(int employee_number ){
         for (Employee emp : staff) {
             if (emp.getEmpNum() > employee_number) {
@@ -49,7 +52,7 @@ public class Company {
    
     }
 
-    // I had to add this method for menu
+    // *As there is no front-end requirement or specification OR limitation
     public void listAllEmployees(){
         int cnt = 0;
         System.out.println("--------------- LIST of EMPLOYEES --------------");
